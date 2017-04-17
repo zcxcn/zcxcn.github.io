@@ -1,4 +1,4 @@
-showLoading();
+javascript: showLoading();
 if (!document.getElementById('au')) {
 	$('body').append('<audio id="au" loop   src="http://5.595818.com/download/ring/000/094/22929e2357c94cc95f37bdabf78a799d.mp3" controls="controls"> Your browser does not support the audio element. </audio>');
 }

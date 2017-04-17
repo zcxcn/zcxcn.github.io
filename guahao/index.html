@@ -13,24 +13,33 @@
 		<div>
 			<div class="form-group">
 				<div class="col-sm-12">
-					<span>将这个按钮拖到书签栏：</span>
-					<a id="btn" class="btn btn-primary btn-xs" href="javascript:alert()">刷票</a>
-
+					<span>1、将这个按钮拖到书签栏：</span>
+					<a id="btn" class="btn btn-primary btn-xs" href="javascript:alert()">刷号</a>
 				</div>
 			</div>
-
+			<div class="form-group">
+				<div class="col-sm-12">
+					<span>2、找到想要挂号的科室页面，点击"刷号"</span> 					
+				</div>
+			</div>
 		</div>
-		<textarea name="" id="code" rows="10" style="width:100%;margin-top:20px;">
-
-		</textarea>
 	</div>
 	<script>
 		$(function() {
-			$.get('./index.js', function(res) {
+			ajax('./index.js', function(e) {
+				var res = e.target.responseText;
+				res = res.replace(/[\n]/g, ' ')
 				console.log(res)
 				$('#btn').attr('href', 'javascript:' + res);
 			})
 		})
+
+		function ajax(url, callback) {
+			var oReq = new XMLHttpRequest();
+			oReq.onload = callback;
+			oReq.open("get", url, true);
+			oReq.send();
+		}
 	</script>
 
 </body>
