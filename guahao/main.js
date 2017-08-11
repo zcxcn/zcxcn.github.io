@@ -53,7 +53,7 @@ function showNotice(title, body) {
 }
 
 function showLoading() {
-	var loading = $('<div class="loading">%E5%88%B7%E7%A5%A8%E4%B8%AD%E3%80%82%E3%80%82%E3%80%82</div>');
+	var loading = $('<div class="loading">正在刷...</div>');
 	$('body').append(loading);
 	loading.css({'position': 'fixed', 'left': '0', 'top': '0', 'background': '#ccc', 'padding': '10px 20px'});
 }
