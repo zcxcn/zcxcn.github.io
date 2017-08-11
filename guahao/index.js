@@ -29,8 +29,9 @@ function check() {
 			showNotice('%E5%88%B7%E5%88%B0%E5%8F%B7%E5%95%A6', text);
 			flashTitleStart();
 		} else {
-			if (!$('#au')[0].paused);
-			$('#au')[0].pause();
+			if (!$('#au')[0].paused) {
+				$('#au')[0].pause();
+			}
 		}
 	});
 }
