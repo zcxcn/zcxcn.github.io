@@ -47,7 +47,7 @@
 			ajax('./index.js', function(e) {
 				var res = e.target.responseText;
 				res = res.replace(/[\n]/g, ' ')
-				console.log(res)
+				console.log(res);
 				$('#btn').attr('href', 'javascript:' + res);
 			})
 			$('#btn-play').click(function() {
@@ -56,8 +56,8 @@
 				} else {
 					$('#au')[0].pause();
 				}
-			})
-		})
+			});
+		});
 
 		function ajax(url, callback) {
 			var oReq = new XMLHttpRequest();
