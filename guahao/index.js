@@ -1,4 +1,4 @@
-javascript: showLoading();
+javascript : showLoading();
 if (!document.getElementById('au')) {
 	$('body').append('<audio id="au" loop   src="http://5.595818.com/download/ring/000/094/22929e2357c94cc95f37bdabf78a799d.mp3" controls="controls"> Your browser does not support the audio element. </audio>');
 }
@@ -24,8 +24,10 @@ function check() {
 		var newtable = $('table', body);
 		$('table').replaceWith(newtable);
 		if (yuyues.length > 0) {
-			if ($('#au')[0].paused);
-			$('#au')[0].play();
+			if ($('#au')[0].paused){
+				$('#au')[0].play();
+			} 
+			
 			showNotice('%E5%88%B7%E5%88%B0%E5%8F%B7%E5%95%A6', text);
 			flashTitleStart();
 		} else {
@@ -53,13 +55,7 @@ function showNotice(title, body) {
 function showLoading() {
 	var loading = $('<div class="loading">%E5%88%B7%E7%A5%A8%E4%B8%AD%E3%80%82%E3%80%82%E3%80%82</div>');
 	$('body').append(loading);
-	loading.css({
-		'position': 'fixed',
-		'left': '0',
-		'top': '0',
-		'background': '#ccc',
-		'padding': '10px 20px',
-	});
+	loading.css({'position': 'fixed', 'left': '0', 'top': '0', 'background': '#ccc', 'padding': '10px 20px'});
 }
 
 function flashTitleStart() {

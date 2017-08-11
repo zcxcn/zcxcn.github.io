@@ -14,7 +14,7 @@
 			<div class="form-group">
 				<div class="col-sm-12">
 					<p>
-					<b>此插件用来捡漏（有人退号）</b>
+						<b>此插件用来捡漏（有人退号）</b>
 					</p>
 				</div>
 			</div>
@@ -29,14 +29,15 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-12">
-					<p><span>2、找到想要挂号的科室页面，点击"刷号"。电脑不要关机、不要断网、保持网页打开状态</span></p> 				
+					<p><span>2、找到想要挂号的科室页面，点击"刷号"。电脑不要关机、不要断网、保持网页打开状态</span></p>
 					<p><img width=600 src="./img/g2.gif" alt=""></p>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-12">
-					<p><span>3、刷到号时，电脑会弹出提示，并播放一段魔性的音乐。刷新或关闭页面，音乐停止 </span> <a  target="_blank" href="http://5.595818.com/download/ring/000/094/22929e2357c94cc95f37bdabf78a799d.mp3">试听音乐</a></p>
+					<p><span>3、刷到号时，电脑会弹出提示，并播放一段魔性的音乐。刷新或关闭页面，音乐停止 </span><a href="javascript:;" id="btn-play">点击试听</a></p>
 					<p><img width=600 src="./img/g3.gif" alt=""></p>
+					<audio id="au" loop src="http://5.595818.com/download/ring/000/094/22929e2357c94cc95f37bdabf78a799d.mp3" controls="controls"> Your browser does not support the audio element. </audio>
 				</div>
 			</div>
 		</div>
@@ -49,6 +50,13 @@
 				console.log(res)
 				$('#btn').attr('href', 'javascript:' + res);
 			})
+			$('#btn-play').click(function() {
+				if ($('#au')[0].paused) {
+					$('#au')[0].play();
+				} else {
+					$('#au')[0].pause();
+				}
+			})
 		})
 
 		function ajax(url, callback) {
@@ -60,13 +68,13 @@
 	</script>
 
 	<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "https://hm.baidu.com/hm.js?fd4b2f197d65ef7b995af0219a41c585";
-	  var s = document.getElementsByTagName("script")[0];
-	  s.parentNode.insertBefore(hm, s);
-	})();
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?fd4b2f197d65ef7b995af0219a41c585";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
 	</script>
 </body>
 
