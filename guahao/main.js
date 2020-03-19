@@ -34,7 +34,7 @@ const res2= await searchWeek(2)
 const result=res1.data.calendars.concat(res2.data.calendars)
 
 const availables=result.filter(item=>{
-return item.status!=='NO_INVENTORY1'
+return item.status!=='NO_INVENTORY'
 })
 if(availables.length>0){
   // alert(`有${availables.length}天可约`);
