@@ -1,6 +1,6 @@
 javascript : showLoading();
 if (!document.getElementById('au')) {
-  document.body.insertAdjacentHTML('beforeEnd','<audio id="au" preload="metadata" src="http://att.chinauui.com/day_180409/20180409_ba7170cafba6e2b76253RZe0JbPJl8M7.mp3"></audio>');
+  document.body.insertAdjacentHTML('beforeEnd','<audio id="au" preload="metadata" src="http://zcxcn.github.io/guahao/mmcs.mp3"></audio>');
 }
 if (Notification && Notification.permission !== "granted") {
 	Notification.requestPermission(function(status) {
