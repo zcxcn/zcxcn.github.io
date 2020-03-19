@@ -1,6 +1,6 @@
 javascript : showLoading();
 if (!document.getElementById('au')) {
-	$('body').append('<audio id="au" loop   src="http://att.chinauui.com/day_180905/20180905_223c5c9c23545eb5ea25ZvVQrS9zJx2U.mp3" controls="controls"> Your browser does not support the audio element. </audio>');
+  document.body.insertAdjacentHTML('beforeEnd','<audio id="au" preload="metadata" src="http://att.chinauui.com/day_180409/20180409_ba7170cafba6e2b76253RZe0JbPJl8M7.mp3"></audio>');
 }
 if (Notification && Notification.permission !== "granted") {
 	Notification.requestPermission(function(status) {
@@ -9,37 +9,55 @@ if (Notification && Notification.permission !== "granted") {
 		}
 	});
 }
+search()
 
-function check() {
-	var url = location.href;
-	var text = $('.ksorder_box_top_p').text().trim();
-	console.log('请求:' + url);
-	$.get(url, function(res) {
-		var body = $(res);
-		if (body.find('html').length > 0) {
-			console.log('请求成功');
-		}
-		var yuyues = $('.ksorder_kyy', body);
-		console.log('可预约天数:', yuyues.length);
-		var newtable = $('table', body);
-		$('table').replaceWith(newtable);
-		if (yuyues.length > 0) {
-			if ($('#au')[0].paused){
-				$('#au')[0].play();
-			} 
-			
-			showNotice('%E5%88%B7%E5%88%B0%E5%8F%B7%E5%95%A6', text);
-			flashTitleStart();
-		} else {
-			if (!$('#au')[0].paused) {
-				$('#au')[0].pause();
-			}
-		}
-	});
+async  function search(){
+
+let [a,b,hosCode,firstDeptCode,secondDeptCode,c]=location.pathname.split('/')
+const body={hosCode,firstDeptCode,secondDeptCode,week:1}
+const url="http://www.114yygh.com/web/v2/product/list?_time="+Date.now();
+const headers={"credentials":"include","headers":{"accept":"application/json, text/plain, */*","accept-language":"zh-CN,zh;q=0.9,en;q=0.8,ja;q=0.7,zh-TW;q=0.6","cache-control":"no-cache","content-type":"application/json;charset=UTF-8","pragma":"no-cache"},"referrer":"http://www.114yygh.com/hospital/133/0/200001345/source","referrerPolicy":"no-referrer-when-downgrade"}
+
+const  searchWeek=async (week)=>{
+return fetch(url,
+{...headers,
+"body":
+JSON.stringify({...body,week:week})
+,"method":"POST","mode":"cors"})
+.then((res)=>{
+return res.json()
+})
 }
-check();
+
+const res1= await searchWeek(1)
+const res2= await searchWeek(2)
+const result=res1.data.calendars.concat(res2.data.calendars)
+
+const availables=result.filter(item=>{
+return item.status!=='NO_INVENTORY1'
+})
+if(availables.length>0){
+  // alert(`有${availables.length}天可约`);
+  const au=document.getElementById('au')
+  if (au.paused){
+    au.play();
+  }
+
+  showNotice('%E5%88%B7%E5%88%B0%E5%8F%B7%E5%95%A6',`有${availables.length}天可约`);
+  flashTitleStart();
+}else{
+  console.log(`有0天可约`)
+  const au=document.getElementById('au')
+  if (!au.paused) {
+    au.pause();
+  }
+}
+
+
+}
+
 setInterval(function() {
-	check();
+	search();
 }, 30000);
 
 function showNotice(title, body) {
@@ -53,19 +71,19 @@ function showNotice(title, body) {
 }
 
 function showLoading() {
-	var loading = $('<div class="loading">正在刷...</div>');
-	$('body').append(loading);
-	loading.css({'position': 'fixed', 'left': '0', 'top': '0', 'background': '#ccc', 'padding': '10px 20px'});
+	var loading = '<div class="loading">正在刷...</div>'
+	document.body.insertAdjacentHTML('afterBegin',loading)
+	// loading.css({'position': 'fixed', 'left': '0', 'top': '0', 'background': '#ccc', 'padding': '10px 20px'});
 }
 
 function flashTitleStart() {
-	var titleDom = $('title');
-	var oldTitle = titleDom.text().trim();
+	var titleDom = document.getElementsByTagName('title')[0];
+	var oldTitle = titleDom.innerText;
 	setTimeout(function() {
-		if (titleDom.text().trim() == oldTitle) {
-			titleDom.text('***');
+		if (titleDom.innerText == oldTitle) {
+			titleDom.innerText='***';
 		} else {
-			titleDom.text(oldTitle);
+			titleDom.innerText=oldTitle;
 		}
 		setTimeout(arguments.callee, 500);
 	}, 500)
