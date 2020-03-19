@@ -1,6 +1,6 @@
 javascript : showLoading();
 if (!document.getElementById('au')) {
-  document.body.insertAdjacentHTML('beforeEnd','<audio id="au" preload="metadata" src="http://zcxcn.github.io/guahao/di.mp3"></audio>');
+  document.body.insertAdjacentHTML('beforeEnd','<audio id="au" loop preload="metadata" src="http://zcxcn.github.io/guahao/di.mp3"></audio>');
 }
 if (Notification && Notification.permission !== "granted") {
 	Notification.requestPermission(function(status) {
