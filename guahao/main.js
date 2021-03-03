@@ -15,7 +15,7 @@ async  function search(){
 
 let [a,b,hosCode,firstDeptCode,secondDeptCode,c]=location.pathname.split('/')
 const body={hosCode,firstDeptCode,secondDeptCode,week:1}
-const url="http://www.114yygh.com/web/v2/product/list?_time="+Date.now();
+const url="//www.114yygh.com/web/v2/product/list?_time="+Date.now();
 const headers={"credentials":"include","headers":{"accept":"application/json, text/plain, */*","accept-language":"zh-CN,zh;q=0.9,en;q=0.8,ja;q=0.7,zh-TW;q=0.6","cache-control":"no-cache","content-type":"application/json;charset=UTF-8","pragma":"no-cache"},"referrer":"http://www.114yygh.com/hospital/133/0/200001345/source","referrerPolicy":"no-referrer-when-downgrade"}
 
 const  searchWeek=async (week)=>{
