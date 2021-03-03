@@ -11,7 +11,7 @@ if (Notification && Notification.permission !== "granted") {
 }
 async function start() {
   const search = async (option) => {
-    return fetch("https://www.114yygh.com/web/product/list?_time=1614753697591", {
+    return fetch("https://www.114yygh.com/web/product/list?_time=?"+Date.now(), {
       "headers": {
         "accept": "application/json, text/plain, */*",
         "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,ja;q=0.7,zh-TW;q=0.6",
