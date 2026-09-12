@@ -1,1 +1,0 @@
-import{rt as e}from"./tank-model-6M8zOKd6.js";var t=`kernelBlurVaryingDeclaration`,n=`varying sampleCoord{X}: vec2f;`;e.IncludesShadersStoreWGSL[t]||(e.IncludesShadersStoreWGSL[t]=n);var r={name:t,shader:n};export{r as t};
